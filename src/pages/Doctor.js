@@ -6,6 +6,7 @@ import Navbar from "../components/Navbar";
 import { useNavigate } from "react-router-dom";
 import { ethers } from "ethers";
 import { toast } from "react-toastify";
+import axios from "axios";
 
 const user = {
   work: "Neurologist",
@@ -25,13 +26,30 @@ function Doctor({ state, account }) {
 
   const { contract } = state;
   const [patients, setPatient] = useState([]);
-
+  const [reports, setReports] = useState([]);
   const [isButtonClicked, setIsButtonClicked] = useState(false);
   const handleClick = () => {
     setIsButtonClicked(true);
   };
 
   useEffect(() => {
+    async function getData() {
+      var config = {
+        method: "get",
+        url: "https://api.pinata.cloud/data/pinList?status=pinned&pinSizeMin=100",
+        headers: {
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySW5mb3JtYXRpb24iOnsiaWQiOiI3YzdhZTY1Ny1jZDIxLTQwNzEtYmI1Yy03NjA2M2FjZjI3NWYiLCJlbWFpbCI6InZhbnNoaWthLnNoYWhAc3BpdC5hYy5pbiIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJwaW5fcG9saWN5Ijp7InJlZ2lvbnMiOlt7ImlkIjoiRlJBMSIsImRlc2lyZWRSZXBsaWNhdGlvbkNvdW50IjoxfSx7ImlkIjoiTllDMSIsImRlc2lyZWRSZXBsaWNhdGlvbkNvdW50IjoxfV0sInZlcnNpb24iOjF9LCJtZmFfZW5hYmxlZCI6ZmFsc2UsInN0YXR1cyI6IkFDVElWRSJ9LCJhdXRoZW50aWNhdGlvblR5cGUiOiJzY29wZWRLZXkiLCJzY29wZWRLZXlLZXkiOiJhNjE0NTc3NzIxOGVlNzM5YmFkMCIsInNjb3BlZEtleVNlY3JldCI6IjkwMTk3MDgxMGQ1NGIwMGQ5YjA1YWQ4MjM0NjU1NjhmYjNlN2IxZGRlMDQwN2M2MmQzYTYwMTlhZDEyOGFlYmQiLCJpYXQiOjE3MTI5MDIxMDB9.w6LqwH1LJlFDS1ItK7cVR_iLnwvzJjSxveNPra6EsFI",
+        },
+      };
+
+      const res = await axios(config);
+      const array = res.data.rows;
+
+      // console.log(array);
+
+      setReports(array);
+    }
     const patientData = async () => {
       const account = document.querySelector("#patientAddress").value;
 
@@ -46,7 +64,11 @@ function Doctor({ state, account }) {
     if (isButtonClicked && contract) {
       patientData();
     }
+    if (isButtonClicked) {
+      getData();
+    }
   }, [isButtonClicked, contract]);
+  console.log(reports);
 
   const addAdmin = async (event) => {
     event.preventDefault();
@@ -93,7 +115,7 @@ function Doctor({ state, account }) {
         </div>
 
         <div className="w-full h-3/6 px-5 flex justify-around">
-          <Slider cards={patients} type="2" />
+          <Slider cards={patients} reports={reports} type="2" />
           <div className="rounded-xl bg-gradient-to-r from-cyan-500 to-blue-500 text-white h-[150px] px-5 flex flex-col justify-around">
             <div className="flex items-center">
               <input

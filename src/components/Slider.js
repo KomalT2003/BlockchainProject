@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import Card from "./Card";
 
-const Slider = ({ cards, type }) => {
+const Slider = ({ cards, reports, type }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [cardsToShow, setCardsToShow] = useState([]);
   const slideContainer = useRef(null);
@@ -44,7 +44,7 @@ const Slider = ({ cards, type }) => {
       >
         {cardsToShow.length > 0 ? (
           cardsToShow.map((card, index) => (
-            <Card type={type} card={card} key={index} />
+            <Card type={type} card={card} reports={reports} key={index} />
           ))
         ) : (
           <p className="text-2xl">No cards to show.</p>
