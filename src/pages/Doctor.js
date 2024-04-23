@@ -18,7 +18,8 @@ const user = {
 
 function Doctor({ state, account }) {
   const navigate = useNavigate();
-  const name = localStorage.getItem("name");
+  // const name = localStorage.getItem("name");
+  const name = "Komal";
 
   if (!name) {
     navigate("/login");

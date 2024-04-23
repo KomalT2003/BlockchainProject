@@ -17,7 +17,8 @@ const user = {
 
 function Admin({ state }) {
   const navigate = useNavigate();
-  const name = localStorage.getItem("name");
+  // const name = localStorage.getItem("name");
+  const name = "Navneet";
 
   if (!name) {
     navigate("/login");
