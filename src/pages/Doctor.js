@@ -117,7 +117,7 @@ function Doctor({ state, account }) {
 
         <div className="w-full h-3/6 px-5 flex justify-around">
           <Slider cards={patients} reports={reports} type="2" />
-          <div className="rounded-xl bg-gradient-to-r from-cyan-500 to-blue-500 text-white h-[150px] px-5 flex flex-col justify-around">
+          <div className="rounded-xl bg-gradient-to-r from-cyan-500 to-blue-500 text-white h-[150px] px-5 flex flex-col justify-around m-24">
             <div className="flex items-center">
               <input
                 type="text"

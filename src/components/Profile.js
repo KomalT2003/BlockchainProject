@@ -4,7 +4,7 @@ function Profile(props) {
   const r = Math.floor(Math.random() * 20);
 
   return (
-    <div className="rounded-xl bg-blue-500 bg-opacity-[0.3] h-[300px] text-white flex flex-col justify-around hover:bg-opacity-100 transition-all ease-out duration-500">
+    <div className="rounded-xl bg-blue-500  h-[300px] text-white flex flex-col justify-around bg-opacity-100 transition-all ease-out duration-500">
       <div className="flex justify-between ml-10 mt-8 h-3/5">
         {/* <img className="rounded-lg" src={`https://xsgames.co/randomusers/assets/avatars/male/${r}.jpg`} alt="Hello" /> */}
         <div className=" flex flex-col ">

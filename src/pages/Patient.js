@@ -17,8 +17,8 @@ const user = {
 
 function Patient({ state, account }) {
   const navigate = useNavigate();
-  const name = localStorage.getItem("name");
-
+  // const name = localStorage.getItem("name");
+  const name = "Vanshika";
   if (!name) {
     navigate("/login");
   }
@@ -117,7 +117,7 @@ function Patient({ state, account }) {
           </div>
         </div>
 
-        <div className="w-full h-3/6 px-5 flex justify-start">
+        <div className="w-full h-3/6 px-5 flex justify-center">
           <Slider cards={patients} reports={reports} type="1" />
         </div>
       </div>
