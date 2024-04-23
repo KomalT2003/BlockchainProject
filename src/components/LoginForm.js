@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
-const LoginForm = ({state,account}) => {
+const LoginForm = ({ state, account }) => {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [category, setCategory] = useState("patient");
@@ -25,12 +25,12 @@ const LoginForm = ({state,account}) => {
     event.preventDefault();
     toast.success("Logged In");
 
-    localStorage.setItem('name', name)
-    localStorage.setItem('category',category)
+    localStorage.setItem("name", name);
+    localStorage.setItem("category", category);
 
     // const { contract } = state;
     // const person = document.querySelector("#category").value;
-    
+
     // if("admin" === person){
     //   const createAdmin = await contract.createAdmin();
     //   await createAdmin.wait();
@@ -59,7 +59,7 @@ const LoginForm = ({state,account}) => {
   };
 
   return (
-    <div className="h-screen flex flex-col items-center justify-between bkgrd">
+    <div className="h-screen flex flex-col items-center justify-between bg-sky-800">
       <h1 className="text-center text-white text-3xl bg-gray-800 py-2 w-full">
         Login
       </h1>

@@ -18,7 +18,7 @@ function HomePage() {
         </div>
         <div className="w-2/3 h-full flex flex-col justify-center items-center">
           <p className="text-5xl px-10 leading-normal mb-5">
-            A <span className="text-white">decentralised platform</span> that
+            A <span className="text-blue-800">decentralised platform</span> that
             enables secure, fast and transparent exchange
           </p>
           <img className="h-1/4" src={connect} alt="connection" />

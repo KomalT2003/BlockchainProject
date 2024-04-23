@@ -1,17 +1,14 @@
 import React, { useState } from "react";
 
-
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
-const SignUpForm = ({state,account}) => {
-
-  const navigate = useNavigate()
+const SignUpForm = ({ state, account }) => {
+  const navigate = useNavigate();
   // console.log(account)
-  
 
   // if(!account){
-  //  toast.error('Connect Wallet') 
+  //  toast.error('Connect Wallet')
   // }
 
   const [form, setForm] = useState({
@@ -31,17 +28,17 @@ const SignUpForm = ({state,account}) => {
     event.preventDefault();
     toast.success("Logged In");
 
-    localStorage.setItem('name', form.name)
-    localStorage.setItem('category',form.category)
+    localStorage.setItem("name", form.name);
+    localStorage.setItem("category", form.category);
 
     const { contract } = state;
     const person = document.querySelector("#category").value;
-    
-    if("admin" === person){
+
+    if ("admin" === person) {
       const createAdmin = await contract.createAdmin();
       await createAdmin.wait();
       console.log("Admin Created!");
-    } else if("doctor" === person){
+    } else if ("doctor" === person) {
       const createDoctor = await contract.createDoctor();
       await createDoctor.wait();
       console.log("Doctor Created!");
@@ -65,7 +62,7 @@ const SignUpForm = ({state,account}) => {
   };
 
   return (
-    <div className="h-screen flex flex-col items-center justify-between bkgrd">
+    <div className="h-screen flex flex-col items-center justify-between bg-sky-800">
       <h1 className="text-center text-white text-3xl bg-gray-800 py-2 w-full">
         SignUp
       </h1>
